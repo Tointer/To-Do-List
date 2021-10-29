@@ -1,0 +1,52 @@
+.marked{
+    text-decoration: line-through;
+    opacity: 0.3;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    font-size: 18px;
+}
+
+#add-bar{
+    text-align: center;
+}
+
+#input-task{
+    width: 60%;
+}
+
+.delete-btn{
+    border: 0;
+    background: center url("https://cdn.icon-icons.com/icons2/1337/PNG/512/deletebutton_87299.png") no-repeat;
+    background-size: 16px;
+    width:20px;
+    height: 20px;
+    opacity: 0.8;
+    transition: ease-in 0.2s;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover{
+    opacity: 1;
+    background-size: 20px;
+}
+
+.task-text{
+    overflow-wrap: anywhere;
+}
+
+.task-container{
+    display: flex;
+    align-items: baseline;
+}
