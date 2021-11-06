@@ -1,20 +1,19 @@
 
-const addButton = document.getElementById("add-task-button");
 const taskList = document.getElementById("task-list");
 const inputBar = document.getElementById("input-task");
+const addBar = document.getElementById("add-bar");
 
-addButton.addEventListener('click', submitTaskInput);
-
-inputBar.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.key === 'Enter') {
-        submitTaskInput();
-    }
+addBar.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitTaskInput();
 })
 
 function submitTaskInput(){
-    taskList.insertBefore(createTask(inputBar.value), taskList.firstChild);
-    inputBar.value = '';
+    let task = createTask(inputBar.value);
+    addTaskBehaviours(task);
+
+    taskList.insertBefore(task, taskList.firstChild);
+    inputBar.value = "";
 }
 
 function createTask(text){
@@ -26,20 +25,20 @@ function createTask(text){
                 <span class="task-text">${text}</span>
             </div>
             <button class="delete-btn"></button>
-        </li>`, 'text/html');
+        </li>`, "text/html");
 
-    let element = html.body.firstElementChild;
-    let deleteButton = html.getElementsByClassName("delete-btn")[0];
-    let checkBox = html.getElementsByClassName("checkbox")[0];
-    let task = html.getElementsByClassName("task-text")[0];
+    return html.body.firstElementChild;
+}
 
-    deleteButton.addEventListener('click', event => {
+function addTaskBehaviours(element){
+    let deleteButton = element.getElementsByClassName("delete-btn")[0];
+    let checkBox = element.getElementsByClassName("checkbox")[0];
+
+    deleteButton.addEventListener("click", event => {
         taskList.removeChild(element)
     });
 
-    checkBox.addEventListener('click', event => {
-        element.classList.toggle('marked')
+    checkBox.addEventListener("click", event => {
+        element.classList.toggle("marked")
     });
-
-    return element;
 }
